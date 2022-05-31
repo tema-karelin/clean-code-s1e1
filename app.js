@@ -9,7 +9,7 @@
 // Event handling, user interaction is what starts the code execution.
 
 var taskInput=document.getElementById("new-task");//Add a new task.
-var addButton=document.getElementsByTagName("button")[0];//first button
+var addButton=document.getElementsByClassName("button")[0];//first button
 var incompleteTaskHolder=document.getElementById("todo-tasks");//ul of #todo-tasks
 var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
@@ -32,18 +32,27 @@ var createNewTaskElement=function(taskString){
     var deleteButton=document.createElement("button");//delete button
     var deleteButtonImg=document.createElement("img");//delete button image
 
-    label.innerText=taskString;
-    label.className='task';
+    //Add default classes to use css properties after removing tag selectors (clean-code task)
+    listItem.classList.add("list-item");
+    checkBox.classList.add("input");
+    label.classList.add("label");
+    editInput.classList.add("input");
+    editButton.classList.add("button");
+    deleteButton.classList.add("button");
+    deleteButtonImg.classList.add("del-img");
 
+    label.innerText=taskString;
+    label.classList.add("task");
+    
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="task";
+    editInput.classList.add("task");
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    editButton.classList.add("edit");
 
-    deleteButton.className="del";
+    deleteButton.classList.add("del");
     deleteButtonImg.src='./remove.svg';
     deleteButton.appendChild(deleteButtonImg);
 
